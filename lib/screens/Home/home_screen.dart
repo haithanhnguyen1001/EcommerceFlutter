@@ -1,9 +1,11 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/screens/Home/Widget/category.dart';
 import 'package:ecommerce/screens/Home/Widget/image_slider.dart';
+import 'package:ecommerce/screens/Home/Widget/product_card.dart';
 import 'package:ecommerce/screens/Home/Widget/search_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/product_model.dart';
 import 'Widget/home_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -52,6 +54,42 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               // for category seletion
               const Categories(),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Special For You",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Text(
+                    "See all",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: Colors.black54),
+                  )
+                ],
+              ),
+              // for shopping items
+              GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.78,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                ),
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  return ProductCard(
+                    product: products[index],
+                  );
+                },
+              ),
             ],
           ),
         ),

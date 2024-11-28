@@ -1,4 +1,5 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/screens/Home/Widget/category.dart';
 import 'package:ecommerce/screens/Home/Widget/image_slider.dart';
 import 'package:ecommerce/screens/Home/Widget/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -46,10 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   });
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // for category seletion
+              const Categories(),
             ],
           ),
         ),
